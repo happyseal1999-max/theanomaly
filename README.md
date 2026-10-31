@@ -1,3 +1,15 @@
+# theAnomaly
+
+theAnomaly is a rebranded fork of [Monkeytype](https://github.com/monkeytypegame/monkeytype) by Miodec and contributors, licensed under GPL-3.0 (see `LICENSE`).
+
+## Deploying to Vercel
+
+Import this repository in Vercel and deploy; `vercel.json` sets the install/build commands and the `frontend/dist` output. No environment variables are required.
+
+Without `BACKEND_URL` the site runs in frontend-only mode: the typing test, themes, settings and every test mode work, while accounts, saved results and leaderboards are disabled. Upstream ads, analytics and error tracking are turned off.
+
+---
+
 [![](https://github.com/monkeytypegame/monkeytype/blob/master/frontend/static/images/githubbanner2.png?raw=true)](https://monkeytype.com/)
 <br />
 
