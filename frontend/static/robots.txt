@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://theanomaly.vercel.app/sitemap.xml
+Sitemap: https://theanomaly-navy.vercel.app/sitemap.xml

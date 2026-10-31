@@ -159,7 +159,7 @@ function Watermark(): JSXElement {
             </Show>
             <span>{date}</span>
             <span>|</span>
-            <span>theanomaly.vercel.app</span>
+            <span>theanomaly-navy.vercel.app</span>
           </div>
         );
       }}
