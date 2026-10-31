@@ -1,6 +1,7 @@
 /* oxlint-disable no-unsafe-member-access */
 import { debounce } from "throttle-debounce";
 import { Config } from "../config/store";
+import { ADS_ENABLED } from "../constants/ads";
 import * as EG from "./eg-ad-controller";
 import * as PW from "./pw-ad-controller";
 import { adSlotMediaQueries } from "../components/common/Advertisement";
@@ -30,6 +31,7 @@ const choice: "eg" | "pw" = "pw";
 // }
 
 function init(): void {
+  if (!ADS_ENABLED) return;
   if (choice === "eg") {
     EG.init();
   } else {
@@ -59,6 +61,7 @@ async function _refreshVisible(): Promise<void> {
 }
 
 export async function checkAdblock(): Promise<void> {
+  if (!ADS_ENABLED) return;
   return new Promise((resolve) => {
     if (choice === "eg") {
       if (getAdBlock() === undefined) {
@@ -76,6 +79,7 @@ export async function checkAdblock(): Promise<void> {
 }
 
 export async function checkCookieblocker(): Promise<void> {
+  if (!ADS_ENABLED) return;
   return new Promise((resolve) => {
     if (getCookieBlocker() === undefined) {
       if (choice === "pw") {
@@ -103,7 +107,7 @@ export async function checkCookieblocker(): Promise<void> {
 }
 
 export async function reinstate(): Promise<boolean> {
-  if (Config.ads === "off") return false;
+  if (!ADS_ENABLED || Config.ads === "off") return false;
   if (!initialised) {
     init();
     return true;
@@ -120,7 +124,7 @@ export async function reinstate(): Promise<boolean> {
 }
 
 export async function renderResult(): Promise<void> {
-  if (Config.ads === "off") return;
+  if (!ADS_ENABLED || Config.ads === "off") return;
   if (!initialised) {
     init();
   }

@@ -59,6 +59,13 @@ export async function init(callback: ReadyCallback): Promise<void> {
       }
     ).firebaseConfig;
 
+    // frontend-only mode: no firebase project configured
+    if (firebaseConfig.apiKey === undefined || firebaseConfig.apiKey === "") {
+      setUserState(null);
+      await callback(false, null);
+      return;
+    }
+
     readyCallback = callback;
     app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
     Auth = getAuth(app);

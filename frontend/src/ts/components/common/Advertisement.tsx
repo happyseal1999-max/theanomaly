@@ -2,6 +2,7 @@ import { Ads } from "@monkeytype/schemas/configs";
 import { JSXElement, onCleanup, Show } from "solid-js";
 
 import { getConfig } from "../../config/store";
+import { ADS_ENABLED } from "../../constants/ads";
 import { isResultShown } from "../../states/result";
 import { getRoutePage } from "../../states/router";
 import { isFocusMode } from "../../states/test";
@@ -69,9 +70,10 @@ export function Advertisement(props: {
   vertical?: boolean;
 }): JSXElement {
   const isVisible = () =>
-    Array.isArray(props.visible)
+    ADS_ENABLED &&
+    (Array.isArray(props.visible)
       ? props.visible.includes(getConfig.ads)
-      : props.visible === getConfig.ads;
+      : props.visible === getConfig.ads);
 
   const slotClass = (size: AdSize): string =>
     cn(adSlotClass(size), {

@@ -3,6 +3,7 @@ import { JSXElement, Show, Suspense } from "solid-js";
 
 import { getServerConfigurationQueryOptions } from "../../../queries/server-configuration";
 import { getLoginPageInputsEnabled } from "../../../states/login";
+import { hasBackend } from "../../../utils/env";
 import { LoadingCircle } from "../../common/LoadingCircle";
 import { Login } from "./Login";
 import { Register } from "./Register";
@@ -10,7 +11,7 @@ import { Register } from "./Register";
 export function LoginPage(): JSXElement {
   const serverConfig = useQuery(() => getServerConfigurationQueryOptions());
   const isSignUpDisabled = (): boolean =>
-    !(serverConfig.data?.users.signUp ?? true);
+    !hasBackend() || !(serverConfig.data?.users.signUp ?? true);
 
   return (
     <>

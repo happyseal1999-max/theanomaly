@@ -67,7 +67,7 @@ export async function captureAndDownload(): Promise<void> {
     if (data === null) return;
 
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const filename = `monkeytype-result-${timestamp}.png`;
+    const filename = `theanomaly-result-${timestamp}.png`;
 
     downloadFile({ data, filename });
 

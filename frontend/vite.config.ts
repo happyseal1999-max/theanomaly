@@ -7,6 +7,7 @@ import {
   CSSOptions,
 } from "vite";
 import path from "node:path";
+import { existsSync } from "node:fs";
 import injectHTML from "vite-plugin-html-inject";
 import childProcess from "child_process";
 import autoprefixer from "autoprefixer";
@@ -128,8 +129,8 @@ function getPlugins({
       injectRegister: null,
       registerType: "autoUpdate",
       manifest: {
-        short_name: "Monkeytype",
-        name: "Monkeytype",
+        short_name: "theAnomaly",
+        name: "theAnomaly",
         start_url: "/",
         icons: [
           {
@@ -333,7 +334,11 @@ export default defineConfig(({ mode }): UserConfig => {
   const isDevelopment = mode !== "production";
 
   if (!isDevelopment) {
-    if (env["RECAPTCHA_SITE_KEY"] === undefined) {
+    if (
+      env["BACKEND_URL"] !== undefined &&
+      env["BACKEND_URL"] !== "" &&
+      env["RECAPTCHA_SITE_KEY"] === undefined
+    ) {
       throw new Error(`${mode}: RECAPTCHA_SITE_KEY is not defined`);
     }
     if (useSentry && env["SENTRY_AUTH_TOKEN"] === undefined) {
@@ -358,7 +363,15 @@ export default defineConfig(({ mode }): UserConfig => {
           : [
               {
                 find: /\/constants\/firebase-config$/,
-                replacement: "/constants/firebase-config-live",
+                // fall back to the empty example config (frontend-only mode)
+                replacement: existsSync(
+                  path.resolve(
+                    __dirname,
+                    "src/ts/constants/firebase-config-live.ts",
+                  ),
+                )
+                  ? "/constants/firebase-config-live"
+                  : "/constants/firebase-config-example",
               },
             ]),
       ],

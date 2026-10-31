@@ -12,7 +12,7 @@ export function Logo(): JSXElement {
     <Link
       to="/"
       class="-m-2 flex h-6 w-max gap-2 rounded-[0.8rem] p-2 focus-visible:**:data-[ui-element='logoSubtext']:text-transparent"
-      aria-label="Monkeytype Home"
+      aria-label="theAnomaly Home"
       style={{
         "box-sizing": "content-box",
         "font-family": "Lexend Deca ,sans-serif",
@@ -59,7 +59,7 @@ export function Logo(): JSXElement {
           })}
           data-ui-element="logoText"
         >
-          monkeytype
+          theAnomaly
         </h1>
       </div>
     </Link>

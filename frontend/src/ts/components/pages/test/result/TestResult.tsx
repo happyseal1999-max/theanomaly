@@ -11,6 +11,7 @@ import {
 } from "solid-js";
 
 import { getConfig } from "../../../../config/store";
+import { ADS_ENABLED } from "../../../../constants/ads";
 import { useRefWithUtils } from "../../../../hooks/useRefWithUtils";
 import { getAdBlock, getCookieBlocker } from "../../../../states/ads";
 import { getIsScreenshotting, isAuthenticated } from "../../../../states/core";
@@ -158,7 +159,7 @@ function Watermark(): JSXElement {
             </Show>
             <span>{date}</span>
             <span>|</span>
-            <span>monkeytype.com</span>
+            <span>theanomaly.vercel.app</span>
           </div>
         );
       }}
@@ -173,7 +174,8 @@ function ResultAds(): JSXElement {
   return (
     <div
       class={cn("full-width mt-4", {
-        hidden: getIsScreenshotting() || getConfig.ads === "off",
+        hidden:
+          !ADS_ENABLED || getIsScreenshotting() || getConfig.ads === "off",
       })}
     >
       <div

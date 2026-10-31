@@ -8,7 +8,11 @@ let debug = false;
 
 let activated = false;
 
+// DSN belongs to the upstream project
+const SENTRY_ENABLED = false;
+
 export async function activateSentry(): Promise<void> {
+  if (!SENTRY_ENABLED) return;
   if (activated) {
     console.warn("Sentry already activated");
     return;

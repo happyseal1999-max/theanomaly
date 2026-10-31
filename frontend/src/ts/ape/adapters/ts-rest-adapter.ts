@@ -11,6 +11,7 @@ import {
   COMPATIBILITY_CHECK_HEADER,
 } from "@monkeytype/contracts";
 import { addBanner } from "../../states/banners";
+import { hasBackend } from "../../utils/env";
 
 let bannerShownThisSession = false;
 
@@ -28,6 +29,13 @@ function buildApi(timeout: number): (args: ApiFetcherArgs) => Promise<{
   headers: Headers;
 }> {
   return async (request: ApiFetcherArgs) => {
+    if (!hasBackend()) {
+      return {
+        status: 500,
+        body: { message: "No backend server configured" },
+        headers: new Headers(),
+      };
+    }
     try {
       const token = await getIdToken();
       if (token !== null) {

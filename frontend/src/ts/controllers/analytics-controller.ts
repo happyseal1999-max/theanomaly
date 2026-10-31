@@ -19,7 +19,11 @@ export async function log(
   }
 }
 
+// tracking IDs belong to the upstream project
+const ANALYTICS_ENABLED = false;
+
 export function activateAnalytics(): void {
+  if (!ANALYTICS_ENABLED) return;
   if (analytics !== undefined) {
     console.warn("Analytics already activated");
     return;

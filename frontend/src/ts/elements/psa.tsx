@@ -10,7 +10,7 @@ import { authEvent } from "../events/auth";
 import { addBanner } from "../states/banners";
 import { addPsa } from "../states/psas";
 import { secondsToString } from "../utils/date-and-time";
-import { isDevEnvironment } from "../utils/env";
+import { hasBackend, isDevEnvironment } from "../utils/env";
 import { LocalStorageWithSchema } from "../utils/local-storage-with-schema";
 
 const confirmedPSAs = new LocalStorageWithSchema({
@@ -34,6 +34,7 @@ function setMemory(id: string): void {
 }
 
 async function getLatest(): Promise<PSA[] | null> {
+  if (!hasBackend()) return null;
   const response = await Ape.psas.get();
 
   if (response.status === 500) {
