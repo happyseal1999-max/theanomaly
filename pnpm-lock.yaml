@@ -358,14 +358,14 @@ importers:
         specifier: 1.9.4
         version: 1.9.4
       chart.js:
-        specifier: 3.7.1
-        version: 3.7.1
+        specifier: 4.6.1
+        version: 4.6.1
       chartjs-adapter-date-fns:
         specifier: 3.0.0
-        version: 3.0.0(chart.js@3.7.1)(date-fns@3.6.0)
+        version: 3.0.0(chart.js@4.6.1)(date-fns@3.6.0)
       chartjs-plugin-annotation:
         specifier: 2.2.1
-        version: 2.2.1(chart.js@3.7.1)
+        version: 2.2.1(chart.js@4.6.1)
       chartjs-plugin-trendline:
         specifier: 3.2.4
         version: 3.2.4
@@ -2664,6 +2664,9 @@ packages:
     resolution: {integrity: sha512-jRVXr+zsVHxzDXRoh+CDeXzvCsFJ6uiHhqqNQ26Cw9ZsZ3D6nqPUBt1gGVtj2ZPmRL3a9Uk1v8D1aJ8/I12Dow==}
     peerDependencies:
       solid-js: ^1.8.8
+
+  '@kurkle/color@0.3.4':
+    resolution: {integrity: sha512-M5UknZPHRu3DEDWoipU6sE8PdkZ6Z/S+v4dD+Ke8IaNlpdSQah50lz1KtcFBa2vsdOnwbbnxJwVM4wty6udA5w==}
 
   '@kwsites/file-exists@1.1.1':
     resolution: {integrity: sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw==}
@@ -6081,6 +6084,10 @@ packages:
 
   chart.js@3.7.1:
     resolution: {integrity: sha512-8knRegQLFnPQAheZV8MjxIXc5gQEfDFD897BJgv/klO/vtIyFFmgMXrNfgrXpbTr/XbTturxRgxIXx/Y+ASJBA==}
+
+  chart.js@4.6.1:
+    resolution: {integrity: sha512-hJyniucsFmq//EvXYvJ6c6mahPoI3kaxdjVH8awTaJ/fDNWeSqqqArixMJWkWNN6fcYvPU3HneSANFNYtRi61g==}
+    engines: {pnpm: '>=8'}
 
   chartjs-adapter-date-fns@3.0.0:
     resolution: {integrity: sha512-Rs3iEB3Q5pJ973J93OBTpnP7qoGwvq3nUnoMdtxO+9aoJof7UFcRbWcIDteXuYd1fgAvct/32T9qaLyLuZVwCg==}
@@ -14392,6 +14399,8 @@ snapshots:
       '@solid-primitives/utils': 6.4.0(solid-js@1.9.17)
       solid-js: 1.9.17
 
+  '@kurkle/color@0.3.4': {}
+
   '@kwsites/file-exists@1.1.1(supports-color@10.2.2)':
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
@@ -17740,14 +17749,18 @@ snapshots:
 
   chart.js@3.7.1: {}
 
-  chartjs-adapter-date-fns@3.0.0(chart.js@3.7.1)(date-fns@3.6.0):
+  chart.js@4.6.1:
     dependencies:
-      chart.js: 3.7.1
+      '@kurkle/color': 0.3.4
+
+  chartjs-adapter-date-fns@3.0.0(chart.js@4.6.1)(date-fns@3.6.0):
+    dependencies:
+      chart.js: 4.6.1
       date-fns: 3.6.0
 
-  chartjs-plugin-annotation@2.2.1(chart.js@3.7.1):
+  chartjs-plugin-annotation@2.2.1(chart.js@4.6.1):
     dependencies:
-      chart.js: 3.7.1
+      chart.js: 4.6.1
 
   chartjs-plugin-trendline@3.2.4: {}
 
